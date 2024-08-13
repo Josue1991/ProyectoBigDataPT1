@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    environment:
+      - CLUSTER_NAME=test
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+    volumes:
+      - ./hadoop/dfs/name:/hadoop/dfs/name
+      - ./config/core-site.xml:/usr/local/hadoop/etc/hadoop/core-site.xml
+      - ./config/hdfs-site.xml:/usr/local/hadoop/etc/hadoop/hdfs-site.xml
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    environment:
+      - CLUSTER_NAME=test
+    ports:
+      - "9864:9864"
+    volumes:
+      - ./hadoop/dfs/data:/hadoop/dfs/data
+      - ./config/core-site.xml:/usr/local/hadoop/etc/hadoop/core-site.xml
+      - ./config/hdfs-site.xml:/usr/local/hadoop/etc/hadoop/hdfs-site.xml
+    depends_on:
+      - namenode

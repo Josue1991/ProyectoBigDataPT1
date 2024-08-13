@@ -1,0 +1,14 @@
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+         <value>hdfs://localhost:9870</value>
+    </property>
+    <property>
+        <name>ipc.maximum.data.length</name>
+        <value>536870912</value> <!-- 256 MB, mayor que el tamaño máximo de archivo esperado -->
+    </property>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/data/hadoop/tmp</value>
+    </property>
+</configuration>

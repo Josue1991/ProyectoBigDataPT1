@@ -1,0 +1,61 @@
+<configuration>
+    <!-- Configuración de replicación -->
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+    
+    <!-- Dirección del NameNode -->
+    <property>
+        <name>dfs.namenode.rpc-address</name>
+        <value>localhost:9870</value>
+    </property>
+
+    <!-- Directorios de almacenamiento del NameNode y DataNode -->
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/hadoop/dfs/name</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/hadoop/dfs/data</value>
+    </property>
+
+    <!-- Tamaño máximo de datos en una respuesta RPC -->
+    <property>
+        <name>ipc.maximum.data.length</name>
+        <value>536870912</value> <!-- 256 MB, mayor que el tamaño máximo de archivo esperado -->
+    </property>
+
+    <!-- Número máximo de hilos de transferencia en DataNode -->
+    <property>
+        <name>dfs.datanode.max.transfer.threads</name>
+        <value>4096</value>
+    </property>
+
+    <!-- Tiempo de espera de socket del cliente -->
+    <property>
+        <name>dfs.client.socket-timeout</name>
+        <value>120000</value> <!-- 120 segundos -->
+    </property>
+
+    <!-- Tamaño del paquete de escritura -->
+    <property>
+        <name>dfs.client-write-packet-size</name>
+        <value>1048576</value> <!-- 1 MB, suficiente para archivos de 30 MB -->
+    </property>
+
+    <!-- Tamaño de bloque en HDFS -->
+    <property>
+        <name>dfs.blocksize</name>
+        <value>536870912</value> <!-- 128 MB, mayor que el tamaño del archivo -->
+    </property>
+    <property>
+        <name>dfs.client.read.shortcircuit.buffer.size</name>
+        <value>536870912</value> <!-- 1 MB -->
+    </property>
+    <property>
+        <name>dfs.client.read.shortcircuit.streams.cache.size</name>
+        <value>512</value> <!-- Cachear hasta 512 streams -->
+    </property>
+</configuration>
